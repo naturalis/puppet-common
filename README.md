@@ -81,7 +81,7 @@ common::download_extract{ 'solr-4.7.2.tgz':
     extract_dir     => '/data/solr',
     creates         => '/data/solr/solr-4.7.2', 
     download_dir    => '/tmp',
-    extract_command => '/bin/tar -xfv',
+    extract_command => '/bin/tar -xvf',
  }
 ```
 -------------

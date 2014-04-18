@@ -66,7 +66,7 @@ class common {
     $extract_dir     ,
     $creates         ,
     $download_dir    = '/tmp',
-    $extract_command = '/bin/tar -xfv',
+    $extract_command = '/bin/tar -xvf',
   ) {
     ensure_packages(['wget'])
 
@@ -79,7 +79,7 @@ class common {
     exec { "extract ${package_name}" :
       command => "${extract_command} ${download_dir}/${package_name}",
       cwd     => $extract_dir,
-      unless  => "/bin/ls ${$extract_dir}/${package_name}",
+      unless  => "/usr/bin/test -e ${$extract_dir}/${package_name}",
       require => Exec["download ${package_name}"],
     }
   }
