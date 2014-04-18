@@ -77,11 +77,11 @@ common::download_extract{ 'solr-4.7.2.tgz':
 This will result in a extracted package in /data/solr. More variables are configurable
 ```
 common::download_extract{ 'solr-4.7.2.tgz':
-    $link            => http://apache.mirror.1000mbps.com/lucene/solr/4.7.2/solr-4.7.2.tgz',
-    $extract_dir     => '/data/solr',
-    $creates         => '/data/solr/solr-4.7.2', 
-    $download_dir    => '/tmp',
-    $extract_command => '/bin/tar -xfv',
+    link            => http://apache.mirror.1000mbps.com/lucene/solr/4.7.2/solr-4.7.2.tgz',
+    extract_dir     => '/data/solr',
+    creates         => '/data/solr/solr-4.7.2', 
+    download_dir    => '/tmp',
+    extract_command => '/bin/tar -xfv',
  }
 ```
 -------------
