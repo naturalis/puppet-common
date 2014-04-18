@@ -79,7 +79,7 @@ class common {
     exec { "extract ${package_name}" :
       command => "${extract_command} ${download_dir}/${package_name}",
       cwd     => $extract_dir,
-      unless  => "/bin/test ${$extract_dir}/${package_name}",
+      unless  => "/usr/bin/test ${$extract_dir}/${package_name}",
       require => Exec["download ${package_name}"],
     }
   }
