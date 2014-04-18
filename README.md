@@ -11,11 +11,11 @@ Common Functions
 -------------
 This a function library for common uses structures in puppet. Current functions are:
 
-* ensure_package
+<!-- * ensure_package -->
 * directory_structure
 * download_extract
 
-common::ensure_package
+<!-- common::ensure_package
 -------------
 Only install packages if the resource of the packages not yet defined. Installs latest versioin as default.
 ```
@@ -36,7 +36,7 @@ $package_hash = { 'package_a' => {version => '9.41'},
 
 ensure_resources(common::ensure_package,$package_hash)
 ```
--------------
+------------- -->
 
 common::directory_structure
 -------------

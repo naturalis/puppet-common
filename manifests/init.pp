@@ -38,15 +38,15 @@
 class common {
   
 
-  define ensure_package(
-    $version = 'latest'
-  ){
-    if !defined(Package[$name]) {
-      package{ $name :
-        ensure => $version,
-      }
-    }
-  }
+  # define ensure_package(
+  #   $version = 'latest'
+  # ){
+  #   if !defined(Package[$name]) {
+  #     package{ $name :
+  #       ensure => $version,
+  #     }
+  #   }
+  # }
   
 
   define directory_structure(
