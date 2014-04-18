@@ -36,6 +36,31 @@
 # Copyright 2014 Your name here, unless otherwise noted.
 #
 class common {
+  
 
+
+
+
+  define ensure_package(
+    $version = 'lastest'
+  ){
+    if !defined(Package[$name]) {
+      package{ $name :
+        ensure => $version,
+      }
+    }
+  }
+  
+
+  define directory_structure(
+    $user = 'root',
+    $mode = '755',
+  ){
+
+    exec{"create_${name}":
+      command => "/bin/mkdir -p ${name} ; /bin/chmod ${mode} ${name} ; /bin/chown ${user} ${name}",
+      unless  => "/usr/bin/stat -c '%U' ${name} | /bin/grep ${user}"
+    }
+  }
 
 }

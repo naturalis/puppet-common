@@ -1,34 +1,35 @@
-puppet-monophylizer
+puppet-common
 ===================
 
 Puppet module to install 
 
-For more information using this tool: 
+For more information using this tool:
 
-Parameters
--------------
-All parameters are read from hiera
+https://github.com/naturalis/puppet-common
 
-Classes
+Common Functions
 -------------
-- 
+This a function library for common uses structures in puppet. 
 
-Dependencies
+common::ensure_package
 -------------
-- 
-
-Examples
--------------
-Hiera yaml
+Only install packages if the resource of the packages not yet defined. Installs latest versioin as default.
 ```
-sample1:
-    param: 'sampledata'
+common::ensure_package{ ['package_a','package_b']:}
 ```
-Puppet code
+If you need to install a specific version
 ```
-class { thisclass: }
+common::ensure_package{'package_a':
+    version => '9.41',
+  }
 ```
-Result
+This can also be used in combination hashes
+```
+$package_hash = { 'package_a' => {version => '9.41'},
+				  'package_b' => {version => 'latest'},
+				  'package_c',	
+  }
+```
 -------------
 
 
