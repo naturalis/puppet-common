@@ -38,9 +38,6 @@
 class common {
   
 
-
-
-
   define ensure_package(
     $version = 'latest'
   ){
@@ -60,6 +57,30 @@ class common {
     exec{"create_${name}":
       command => "/bin/mkdir -p ${name} ; /bin/chmod ${mode} ${name} ; /bin/chown ${user} ${name}",
       unless  => "/usr/bin/stat -c '%U' ${name} | /bin/grep ${user}"
+    }
+  }
+
+  define download_extract(
+    $package_name    = $name,
+    $link            ,
+    $extract_dir     ,
+    $creates         ,
+    $download_dir    = '/tmp',
+    $extract_command = '/bin/tar -xfv',
+  ) {
+    common::ensure_package{'wget':}
+
+    exec { "download ${package_name}" :
+      command => "/usr/bin/wget ${link} -O ${download_dir}/${package_name}",
+      unless  => "/bin/test -f ${download_dir}/${package_name}",
+      require => Package['wget'],
+    }
+
+    exec { "extract ${package_name}" :
+      command => "${extract_command} ${download_dir}/${package_name}",
+      cwd     => $extract_dir,
+      unless  => "/bin/test ${$extract_dir}/${package_name}",
+      require => Exec["download ${package_name}"],
     }
   }
 
