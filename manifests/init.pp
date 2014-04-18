@@ -42,7 +42,7 @@ class common {
 
 
   define ensure_package(
-    $version = 'lastest'
+    $version = 'latest'
   ){
     if !defined(Package[$name]) {
       package{ $name :
