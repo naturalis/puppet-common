@@ -68,7 +68,7 @@ class common {
     $download_dir    = '/tmp',
     $extract_command = '/bin/tar -xfv',
   ) {
-    common::ensure_package{'wget':}
+    ensure_packages(['wget'])
 
     exec { "download ${package_name}" :
       command => "/usr/bin/wget ${link} -O ${download_dir}/${package_name}",
