@@ -72,7 +72,7 @@ class common {
 
     exec { "download ${package_name}" :
       command => "/usr/bin/wget ${link} -O ${download_dir}/${package_name}",
-      unless  => "/bin/test -f ${download_dir}/${package_name}",
+      unless  => "/usr/bin/test -f ${download_dir}/${package_name}",
       require => Package['wget'],
     }
 
