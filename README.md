@@ -9,7 +9,10 @@ https://github.com/naturalis/puppet-common
 
 Common Functions
 -------------
-This a function library for common uses structures in puppet. 
+This a function library for common uses structures in puppet. Current functions are:
+
+* ensure_package
+* directory_structure
 
 common::ensure_package
 -------------
@@ -48,8 +51,17 @@ common::directory_structure{ '/data/dira/dirb':
   mode => '0750',
 }
 ```
-This can also be used in combination hashes. The example in common::ensure_package
+This can also be used in combination hashes. 
+```
+$dir_hash = { '/data/john/doe' => {user => 'john',
+									   mode => '0700'},
+				  '/data/foo/bar'  => {user => 'foo',
+				  					   mode => '0750'}
+}
 
+ensure_resources(common::directory_structure,$dir_hash)
+```
+-------------
 
 
 Limitations
